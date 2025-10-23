@@ -1,5 +1,4 @@
-import plac
-
+﻿import plac
 from SNN import SNN
 from Parameters import Parameters
 
