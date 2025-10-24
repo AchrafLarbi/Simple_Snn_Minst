@@ -1,2 +1,3 @@
 Initial project setup 
 Neuron class implementation 
+SNN architecture 
