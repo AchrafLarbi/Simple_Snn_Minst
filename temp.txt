@@ -2,3 +2,4 @@ Initial project setup
 Neuron class implementation 
 SNN architecture 
 Parameters module 
+Spike train utilities 
