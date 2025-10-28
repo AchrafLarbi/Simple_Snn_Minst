@@ -4,3 +4,4 @@ SNN architecture
 Parameters module 
 Spike train utilities 
 STDP implementation 
+MNIST loading 
