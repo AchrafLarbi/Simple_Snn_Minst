@@ -6,3 +6,4 @@ Spike train utilities
 STDP implementation 
 MNIST loading 
 Rate encoding 
+Image preprocessing 
