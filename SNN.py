@@ -32,3 +32,11 @@ class SNN:
                     images.append(np.array(img).flatten() / 255.0)
                     labels.append(digit)
         return np.array(images), np.array(labels)
+
+    def rate_encode(self, image, time_steps=None):
+        """Rate-code image to spike train"""
+        if time_steps is None:
+            time_steps = self.parameters.time_steps
+        normalized = image.reshape(-1)
+        spike_trains = np.random.rand(len(normalized), time_steps) < normalized[:, np.newaxis]
+        return spike_trains.astype(float)
