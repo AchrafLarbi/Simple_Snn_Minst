@@ -40,3 +40,13 @@ class SNN:
         normalized = image.reshape(-1)
         spike_trains = np.random.rand(len(normalized), time_steps) < normalized[:, np.newaxis]
         return spike_trains.astype(float)
+
+    def train_epoch(self, data, labels):
+        """Train for one epoch"""
+        losses = []
+        for sample, label in zip(data, labels):
+            spike_train = self.rate_encode(sample)
+            for t in range(spike_train.shape[1]):
+                output = self.forward(spike_train[:, t])
+            losses.append(0.0)  # Placeholder
+        return np.mean(losses)
