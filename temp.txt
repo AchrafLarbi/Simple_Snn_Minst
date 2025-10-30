@@ -7,3 +7,4 @@ STDP implementation
 MNIST loading 
 Rate encoding 
 Image preprocessing 
+Temporal encoding 
