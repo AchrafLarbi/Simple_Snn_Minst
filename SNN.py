@@ -50,3 +50,15 @@ class SNN:
                 output = self.forward(spike_train[:, t])
             losses.append(0.0)  # Placeholder
         return np.mean(losses)
+
+    def save_weights(self, path):
+        """Save network weights"""
+        weights = np.array([n.weights for n in self.neurons])
+        np.savetxt(path, weights, delimiter=',')
+    
+    def load_weights(self, path):
+        """Load network weights"""
+        weights = np.loadtxt(path, delimiter=',')
+        for i, neuron in enumerate(self.neurons):
+            if i < len(weights):
+                neuron.weights = weights[i]
