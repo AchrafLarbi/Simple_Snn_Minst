@@ -8,3 +8,4 @@ MNIST loading
 Rate encoding 
 Image preprocessing 
 Temporal encoding 
+Training loop 
