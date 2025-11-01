@@ -62,3 +62,13 @@ class SNN:
         for i, neuron in enumerate(self.neurons):
             if i < len(weights):
                 neuron.weights = weights[i]
+
+    def apply_stdp_update(self, pre_spikes, post_spikes):
+        """Apply STDP to all synapses"""
+        for i, neuron in enumerate(self.neurons):
+            if post_spikes[i]:
+                for j, pre_spike in enumerate(pre_spikes):
+                    dt = 1  # Time difference
+                    neuron.apply_stdp(bool(pre_spike), True, dt, 
+                                    self.parameters.tau_plus,
+                                    self.parameters.stdp_learning_rate)
