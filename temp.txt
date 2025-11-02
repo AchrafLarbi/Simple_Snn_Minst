@@ -10,3 +10,4 @@ Image preprocessing
 Temporal encoding 
 Training loop 
 Weight updates 
+Inference module 
