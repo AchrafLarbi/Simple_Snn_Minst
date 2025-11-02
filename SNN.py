@@ -72,3 +72,16 @@ class SNN:
                     neuron.apply_stdp(bool(pre_spike), True, dt, 
                                     self.parameters.tau_plus,
                                     self.parameters.stdp_learning_rate)
+
+    def inference(self, spike_train, time_threshold=50):
+        """Perform inference on spike train"""
+        class_votes = np.zeros(self.output_size)
+        
+        for t in range(spike_train.shape[1]):
+            output_spikes = self.forward(spike_train[:, t])
+            for neuron_id, spike in enumerate(output_spikes):
+                if spike:
+                    class_id = neuron_id % self.output_size
+                    class_votes[class_id] += 1
+        
+        return np.argmax(class_votes)
