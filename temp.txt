@@ -11,3 +11,4 @@ Temporal encoding
 Training loop 
 Weight updates 
 Inference module 
+Output layer 
