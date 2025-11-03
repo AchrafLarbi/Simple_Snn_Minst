@@ -85,3 +85,14 @@ class SNN:
                     class_votes[class_id] += 1
         
         return np.argmax(class_votes)
+
+    def evaluate(self, data, labels):
+        """Evaluate network on dataset"""
+        predictions = []
+        for sample in data:
+            spike_train = self.rate_encode(sample)
+            pred = self.inference(spike_train)
+            predictions.append(pred)
+        
+        accuracy = np.mean(np.array(predictions) == labels)
+        return accuracy
