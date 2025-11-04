@@ -96,3 +96,11 @@ class SNN:
         
         accuracy = np.mean(np.array(predictions) == labels)
         return accuracy
+
+    def train_batch(self, batch_data, batch_labels):
+        """Train on a batch of samples"""
+        for sample, label in zip(batch_data, batch_labels):
+            spike_train = self.rate_encode(sample)
+            for t in range(spike_train.shape[1]):
+                output = self.forward(spike_train[:, t])
+                self.apply_stdp_update(spike_train[:, t], output)
