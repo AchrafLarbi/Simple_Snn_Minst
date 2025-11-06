@@ -13,3 +13,4 @@ Weight updates
 Inference module 
 Output layer 
 Evaluation metrics 
+Visualization 
