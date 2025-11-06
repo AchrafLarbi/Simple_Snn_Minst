@@ -104,3 +104,11 @@ class SNN:
             for t in range(spike_train.shape[1]):
                 output = self.forward(spike_train[:, t])
                 self.apply_stdp_update(spike_train[:, t], output)
+
+    def get_layer_spikes(self, spike_train):
+        """Get spike activity for visualization"""
+        layer_activity = []
+        for t in range(spike_train.shape[1]):
+            spikes = self.forward(spike_train[:, t])
+            layer_activity.append(spikes)
+        return np.array(layer_activity)
