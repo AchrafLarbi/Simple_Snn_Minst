@@ -112,3 +112,13 @@ class SNN:
             spikes = self.forward(spike_train[:, t])
             layer_activity.append(spikes)
         return np.array(layer_activity)
+
+    def get_weight_statistics(self):
+        """Get statistics about network weights"""
+        all_weights = np.concatenate([n.weights for n in self.neurons])
+        return {
+            'mean': np.mean(all_weights),
+            'std': np.std(all_weights),
+            'min': np.min(all_weights),
+            'max': np.max(all_weights)
+        }
