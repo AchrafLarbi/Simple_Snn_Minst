@@ -14,3 +14,4 @@ Inference module
 Output layer 
 Evaluation metrics 
 Visualization 
+ANN comparison 
