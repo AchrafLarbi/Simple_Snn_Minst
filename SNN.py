@@ -122,3 +122,8 @@ class SNN:
             'min': np.min(all_weights),
             'max': np.max(all_weights)
         }
+
+    def validate_input(self, inputs):
+        """Validate input dimensions"""
+        if inputs.shape[0] != self.input_size:
+            raise ValueError(f'Expected input size {self.input_size}, got {inputs.shape[0]}')
