@@ -127,3 +127,10 @@ class SNN:
         """Validate input dimensions"""
         if inputs.shape[0] != self.input_size:
             raise ValueError(f'Expected input size {self.input_size}, got {inputs.shape[0]}')
+
+    def run(self):
+        """Main execution method"""
+        print("Initializing SNN...")
+        print(f"Network: {self.parameters.neuron_count} neurons")
+        print(f"Training epochs: {self.parameters.epochs}")
+        print("Ready for training or inference")
