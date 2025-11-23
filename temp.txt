@@ -17,3 +17,4 @@ Visualization
 ANN comparison 
 Analysis tools 
 Result plotting 
+Documentation and final release 
