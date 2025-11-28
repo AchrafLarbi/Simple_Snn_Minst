@@ -1,24 +1,26 @@
-﻿import numpy as np
+﻿from Parameters import Parameters
 
 class Neuron:
-    """Basic neuron model for SNN"""
-    def __init__(self, input_size):
-        self.weights = np.random.randn(input_size) * 0.1
-        self.bias = 0.0
+    def __init__(self, parameters: Parameters):
+        self.parameters = parameters
 
-    def forward(self, inputs):
-        """Compute membrane potential"""
-        return np.dot(inputs, self.weights) + self.bias
-    
-    def spike(self, potential, threshold=1.0):
-        """Check if neuron spikes"""
-        return potential > threshold
+        self.adaptive_spike_threshold = None
+        self.refractory_period = None
+        self.potential = None
+        self.rest_until = None
 
-    def apply_stdp(self, pre_spike, post_spike, dt, tau=20.0, learning_rate=0.0001):
-        """Apply Spike-Timing-Dependent Plasticity"""
-        if pre_spike and post_spike:
-            if dt > 0:
-                weight_change = learning_rate * np.exp(-dt / tau)
-            else:
-                weight_change = learning_rate * np.exp(dt / tau)
-            self.weights += weight_change
+        self.initial()
+
+    def hyperpolarization(self, time_step):
+        self.potential = self.parameters.hyperpolarization_potential
+        self.rest_until = time_step + self.refractory_period
+
+    def inhibit(self, time_step):
+        self.potential = self.parameters.inhibitory_potential
+        self.rest_until = time_step + self.refractory_period
+
+    def initial(self):
+        self.adaptive_spike_threshold = self.parameters.spike_threshold
+        self.rest_until = -1
+        self.refractory_period = 15  # (us)
+        self.potential = self.parameters.resting_potential
