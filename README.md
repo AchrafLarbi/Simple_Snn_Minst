@@ -126,7 +126,7 @@ As part of this lecture, we also provided a poster presentation of our results f
 
 ## 📋 Report
 
-For more details on the implementation, hyperparameters, and comprehensive analysis, please refer to the [accompanying report](report.pdf). Here are some of our key results:<br/>
+For more details on the implementation, hyperparameters, and comprehensive analysis, please refer to the [accompanying report](raport.pdf). Here are some of our key results:<br/>
 <img src="Images/ClassicalANNComparison.png" alt="drawing" width="49%" /> |<img src="Images/SNN_Comparison.png" alt="drawing" width="49%" /><br/>
 The SNN implementation achieved good classification performance after only one epoch of training. However, performance improvements plateaued thereafter and the model was outperformed by classical ANNs with Dense layers after a few epochs. Additionally, the SNNs showed diminishing returns with increased neuron counts compared to classical ANNs.
 
